@@ -1,0 +1,27 @@
+/*
+Syntax of CSS is selector{property: value;}
+Selector can be tag, class or id based
+display property has four values: block, inline, inline-extended and none
+CSS Box model illustrates the concept of margin, border, padding and content. 
+  We can use margin to move elements horizontally.
+position property can static, relative, absolute, fixed
+  static means no change. Position as the browser renders while reading the code
+  relative means relative to current position. We can move elements by using top, right, bottom, left
+  absolute means position the element wrt to the parent element. In absolute we add margin to the parent element
+  relative positioning doesnt affect other elements' position but absolute does affect.
+To center, use either text-align: center or use margin like margin: auto 0 auto 0 because auto puts element at center
+font-family is used for specifying fonts
+em and % are relative sizes but rem ignores the parent sizes
+*/
+body {
+    background-color: #b8e9e9;
+  }
+
+  hr {
+    height: 2;
+    border-style: none;
+    border-top-style: dotted;
+    border-color: grey;
+    border-width: 5;
+    width: 30%;
+  }

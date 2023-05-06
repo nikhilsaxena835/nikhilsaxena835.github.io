@@ -1,7 +1,134 @@
-<!DOCTYPE html>
+<!-- 
+HTML
+h1 to h6 are headings
+center places things at the center
+br gives a line break
+hr gives a horizontal ruler
+meta gives information about the document including encoding, description etc.
+p gives a paragraph of text
+i/em makes text italicised
+b/strong makes text bold it is advisable to use em and strong though
+ul ol and li are for lists
+a is the anchor tag mostly for href
+
+tables have stucture that is nice if followed
+  <table>
+      <thead> table header to add column title </thead>
+      <tbody> table body </tbody>
+      <tfoot> table footer </tfoot>
+  </table>
+  tr is table row
+  td is table data (a cell)
+  th is table header
+  Tables can be used for layout as well by placing content inside td.
+style is used for internal CSS
+span is used to write text between paragraphs when a new line is not required
+
+CSS
+CSS can be inline, internal and external. More on styles.css
+-->
+
 <html>
+
+<head>
+  <title>Phantooo</title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="favicon.ico">
+</head>
+
+
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+  <center>
+    <hr>
+    PRACTICE WEBSITE
+    </hr>
+    <br />
+    <hr noshade />
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/African_Bush_Elephant.jpg/400px-African_Bush_Elephant.jpg"
+      alt="Elephanto" height="200" width="200" />
+    <h1>The Adventures of ELEPHANTO</h1>
+
+    <h3>BY</h3>
+
+    <h2>SaxenaJi @ SVVV</h2>
+
+    <hr />
+    <p>
+      <strong>Everything</strong> an elephant eats is digestible
+      <i>only </i> if it eats food.
+    </p>
+
+    <ul>
+      <li>It has four legs, one nose and two rusks</li>
+      <li>It's color is grey!</li>
+    </ul>
+    <ol>
+      <li>
+        <a href="http://nikhilsaxena835.github.io/index.html">This is the website initially</a>
+      </li>
+    </ol>
+    <hr>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Analysis</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Position</td>
+          <td>Standing</td>
+        </tr>
+        <tr>
+          <td>Drunk?</td>
+          <td>No</td>
+        </tr>
+
+      </tbody>
+    </table>
+    <hr>
+    <div class="middle-container">
+      <div class="profile">
+        <iframe src="https://giphy.com/embed/SWKyABQ08mbXW" width="480" height="382" frameBorder="0" class="giphy-embed"
+          allowFullScreen></iframe>
+        <p><a href="https://giphy.com/gifs/got-get-run-SWKyABQ08mbXW"></a></p>
+
+        <h2>Hello. Let me tell a good elephant joke.</h2>
+        <p>What goes down but never goes up?<br>
+          An elephant in an elevator.</p>
+      </div>
+      <hr>
+      <div class="skills">
+        <h2>My Skills.</h2>
+        <div class="skill-row">
+          <img class="" src="elephant.png" height="200" width="200" alt="">
+          <h3>Coding</h3>
+          <p>Java CSS HTML Python Spring/Boot Django C Javascript React.js Swing PyQt5 CUDA</p>
+        </div>
+        <div class="skill-row">
+          <img class="" src="" alt="">
+          <h3>Technical</h3>
+          <p>OS DBMS CN COA DSA DE TOC CD SE DM EM</p>
+        </div>
+      </div>
+      <hr>
+      <div class="contact-me">
+        <h2>Get In Touch but not Touchy</h2>
+        <a class="btn" href="mailto:name@email.com">CONTACT ME</a>
+      </div>
+    </div>
+
+
+    <div class="bottom-container">
+      <a class="footer-link" href="https://www.linkedin.com/">LinkedIn</a>
+      <a class="footer-link" href="https://twitter.com/">Twitter</a>
+      <a class="footer-link" href="https://www.appbrewery.co/">Website</a>
+      <p>© 2023 Nigil Sexy-hena</p>
+    </div>
+  </center>
 </body>
+
 </html>
