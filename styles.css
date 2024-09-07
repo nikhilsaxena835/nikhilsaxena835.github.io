@@ -16,6 +16,7 @@
 @font-face {
   font-family: myFirstFont;
   src: url(c.ttf);
+
 }
 
 /* Full-page background */
@@ -55,8 +56,9 @@
   margin: 15px;
   font-family: "myFirstFont", sans-serif;
   font-weight: 600;
-  font-size: 15px;
-  letter-spacing: 0.10px;
+  font-size: 18px;
+  letter-spacing: 0.9px
+  
 }
 
 .left {
@@ -96,11 +98,13 @@ h1 {
   font-family: "Pixelify Sans", sans-serif;
   font-weight: 300;
   font-style: normal;
+  font-size: 38px;
 }
 
 h2 {
   font-family: "Handjet", sans-serif;
   font-weight: 600;
+  font-size: 36px;
 }
 
 .imgdp {
@@ -134,8 +138,8 @@ hr.solid {
 .lpartmiddle {
   font-family: "myFirstFont", sans-serif;
   font-weight: 600;
-  font-size: 15px;
-  letter-spacing: 0.10px;
+  font-size: 18px;
+  letter-spacing: 0.9px
 }
 
 .lpartbottom {
@@ -143,7 +147,6 @@ padding-right: 20px;
 }
 
 .rparttop {
-  padding-left: 20px;
   padding-top: 25px;
   padding-bottom: 20px;
 }
@@ -151,15 +154,15 @@ padding-right: 20px;
 .rpartmiddle {
   font-family: "myFirstFont", sans-serif;
   font-weight: 600;
-  font-size: 15px;
-  letter-spacing: 0.10px;
+  font-size: 18px;
+  letter-spacing: 0.9px
 }
 
 .rpartbottom {
   font-family: "myFirstFont", sans-serif;
   font-weight: 600;
-  font-size: 15px;
-  letter-spacing: 0.10px;
+  font-size: 18px;
+  letter-spacing: 0.9px
 
 }
 
@@ -191,8 +194,8 @@ padding-right: 20px;
   max-width: 60%;
   font-family: "myFirstFont", sans-serif;
   font-weight: 600;
-  font-size: 15px;
-  letter-spacing: 0.10px;
+  font-size: 18px;
+  letter-spacing: 0.9px
 }
 
 .contact-section {
