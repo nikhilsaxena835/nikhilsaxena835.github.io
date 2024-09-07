@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Handjet:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Jersey+25&display=swap');
 
 
 * {
@@ -26,7 +25,7 @@
   left: 0;
   width: 100%;
   #background: #E34C7A; /* Background color */
-  background: linear-gradient(to right, #F8BDBD, #FA8282);
+  background: linear-gradient(to right, #F8CCCC, #FA8282);
   background-repeat: no-repeat; /* Ensure no repetition of background */
   background-position: center center; /* Center the background image */
   background-size: cover; /* Ensure the image covers the entire background */
@@ -37,7 +36,7 @@
   display: flex;
   flex-direction: column;
   #background: #FBAD95; /* Semi-transparent background */
-  background: linear-gradient(to right, #F8BDBD, #FA8282);
+  background: linear-gradient(to right, #F8CCCC, #FA8282);
   width: 80%;
   z-index: 1;
   margin: 50px auto;
@@ -52,12 +51,12 @@
 }
 
 .bottom-row {
-  background: linear-gradient(to right, #F8BDBD, #FA8282);
+  background: linear-gradient(to right, #F8CCCC, #FA8282);
   margin: 15px;
-  font-family: "Jersey 25", sans-serif;
-  font-weight: 100;
-  font-size: 18px;
-  letter-spacing: -0.55px;
+  font-family: "myFirstFont", sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.10px;
 }
 
 .left {
@@ -133,7 +132,10 @@ hr.solid {
 }
 
 .lpartmiddle {
-  font-family: "Jersey 25", sans-serif;
+  font-family: "myFirstFont", sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.10px;
 }
 
 .lpartbottom {
@@ -147,7 +149,10 @@ padding-right: 20px;
 }
 
 .rpartmiddle {
-  font-family: "Jersey 25", sans-serif;
+  font-family: "myFirstFont", sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.10px;
 }
 
 .rpartbottom {
@@ -184,7 +189,10 @@ padding-right: 20px;
 
 .project-description {
   max-width: 60%;
-  font-family: "Jersey 25", sans-serif;
+  font-family: "myFirstFont", sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.10px;
 }
 
 .contact-section {
@@ -237,7 +245,7 @@ padding-right: 20px;
 .cursor-container {
     display: inline-flex; /* Align items horizontally */
     align-items: center;  /* Center items vertically */
-    font-family: "Jersey 25", sans-serif; /* Use a monospace font for cursor effect */
+    font-family: "myFirstFont", sans-serif; /* Use a monospace font for cursor effect */
 }
 
 /* Style for the blinking cursor */
