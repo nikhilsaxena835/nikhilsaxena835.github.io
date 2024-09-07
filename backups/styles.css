@@ -1,8 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Handjet:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Jersey+25&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 
 * {
   margin: 0;
@@ -10,8 +15,10 @@
   box-sizing: border-box;
 }
 
-:root {
-  --font-familyH: "Roboto", sans-serif;
+
+#variables
+:root{
+  --font-familyH: "Roboto", sans-serf;
 }
 
 @font-face {
@@ -45,18 +52,9 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Optional: shadow for better visibility */
 }
 
-.main-content {
+.top-row {
   display: flex;
   align-items: flex-start;
-}
-
-.bottom-row {
-  margin: 15px;
-  background: #FFFFFF;
-  font-family: "Jersey 25", sans-serif;
-  font-weight: 100;
-  font-size: 18px;
-  letter-spacing: -0.55px;
 }
 
 .left {
@@ -67,11 +65,8 @@
 
 .vl {
   border-left: 6px solid green;
-  border-radius: 4px;
   height: 500px;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
-  opacity: 0.7;
-  border-image: linear-gradient(to bottom, blue, green) 1;
+  margin: 0 20px; /* Add some margin to separate the vertical line from content */
 }
 
 .right {
@@ -80,55 +75,70 @@
   flex-direction: column;
 }
 
+.bottom-row {
+  margin-top: 20px; /* Space between top row and bottom row */
+  display: flex;
+  flex-direction: column;
+  margin-left: 15%;
+  padding-left: 25px;
+  margin-right: 10%;
+  font-family: "myFirstFont", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: -0.55px;
+}
 
 
-h1 {
+
+
+h1{
   font-family: "Pixelify Sans", sans-serif;
   font-weight: 300;
   font-style: normal;
 }
 
-h2 {
+h2{
   font-family: "Handjet", sans-serif;
   font-weight: 600;
 }
 
 .imgdp {
   text-align: center;
-  display: block;
+  display: block
   margin: 0 auto;
   border-radius: 50%;
 }
 
-hr.solid {
-  border-top: 5px solid #bbb;
+hr.solid{
+
+  border-top: 300px;
+  border: 5px solid #bbb;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
   opacity: 0.7;
   border-image: linear-gradient(to bottom, blue, green) 1;
   border-radius: 4px;
 }
 
-.lparttop {
-  text-align: center;
+.lparttop{
+  text-align: center
   padding-right: 10px;
   padding-top: 25px;
 }
-
-.lpartmiddle {
+.lpartmiddle{
   font-family: "Jersey 25", sans-serif;
 }
-
-.rparttop {
+.rparttop{
   padding-top: 25px;
 }
 
-.rpartmiddle {
+.rpartmiddle{
   font-family: "Jersey 25", sans-serif;
 }
 
-.rpartbottom {
+.rpartbottom{
   font-family: "Jersey 25", sans-serif;
 }
+
 
 .projects-container {
   display: flex;
@@ -175,31 +185,38 @@ hr.solid {
 
 .contact-links {
   display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
-/* Styles for the container */
-.cursor-container {
-    display: inline-flex; /* Align items horizontally */
-    align-items: center;  /* Center items vertically */
-    font-family: "Jersey 25", sans-serif; /* Use a monospace font for cursor effect */
+.contact-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 24px;
+  transition: color 0.3s ease;
 }
 
-/* Style for the blinking cursor */
-.blinking-cursor {
-    display: inline-block;
-    width: 2px; /* Cursor width */
-    height: 1em; /* Cursor height */
-    background-color: black; /* Cursor color */
-    margin-left: 2px; /* Space between text and cursor */
-    animation: blink 1s step-start infinite; /* Blinking animation */
+.contact-links a:hover {
+  color: #007bff;
 }
 
-/* Keyframes for blinking animation */
-@keyframes blink {
-    from, to {
-        background-color: transparent; /* Cursor is invisible */
-    }
-    50% {
-        background-color: black; /* Cursor is visible */
-    }
+.contact-links a i {
+  margin-right: 8px;
 }
+
+/* Additional spacing for text-based links */
+.contact-links .text-link {
+  font-size: 18px;
+}
+
+
+.vl {
+  border-left: 6px solid green;
+  border-radius: 4px;
+  height: 500px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+  opacity: 0.7;
+  border-image: linear-gradient(to bottom, blue, green) 1;
+}
+
