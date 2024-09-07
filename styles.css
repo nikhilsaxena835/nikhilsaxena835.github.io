@@ -25,7 +25,6 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh; /* Full viewport height */
   background: #193DF1; /* Background color */
   background-repeat: no-repeat; /* Ensure no repetition of background */
   background-position: center center; /* Center the background image */
@@ -52,7 +51,6 @@
 
 .bottom-row {
   margin: 15px;
-  background: #FFFFFF;
   font-family: "Jersey 25", sans-serif;
   font-weight: 100;
   font-size: 18px;
