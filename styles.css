@@ -25,22 +25,21 @@
   top: 0;
   left: 0;
   width: 100%;
-  #background: #E34C7A; /* Background color */
-  background: linear-gradient(to right, #F8CCCC, #FA8282);
-  background-repeat: no-repeat; /* Ensure no repetition of background */
-  background-position: center center; /* Center the background image */
-  background-size: cover; /* Ensure the image covers the entire background */
+  background: #ece0d0;
+  background-repeat: no-repeat; 
+  background-position: center center;
+  background-size: cover; 
   z-index: 0; /* Make sure it is behind other content */
 }
 
 .container {
   display: flex;
   flex-direction: column;
-  #background: #FBAD95; /* Semi-transparent background */
-  background: linear-gradient(to right, #F8CCCC, #FA8282);
+  background: linear-gradient(to right, #f8adaa, #df6666);
   width: 80%;
   z-index: 1;
   margin: 50px auto;
+  margin-top: 0px;
   padding: 20px;
   border-radius: 8px; /* Optional: rounded corners */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Optional: shadow for better visibility */
@@ -52,7 +51,7 @@
 }
 
 .bottom-row {
-  background: linear-gradient(to right, #F8CCCC, #FA8282);
+  background: linear-gradient(to right, #f8adaa, #df6666);
   margin: 15px;
   font-family: "myFirstFont", sans-serif;
   font-weight: 600;
@@ -66,23 +65,14 @@
   display: flex;
   flex-direction: column;
 }
-border-left: 6px solid green; /* Green (current) */
 
 .vl {  
-  border-left: 6px solid #FFC7C7;/*  */ /* Blush Pink (option 1) */
-  /* border-left: 6px solid #B0B0B0; */ /* Silver/Gray (option 2) */
-  /* border-left: 6px solid #D96666; */ /* Deep Rose (option 3) */
-  /* border-left: 6px solid #F5E1C0; */ /* Champagne Beige (option 4) */
-
-  border-radius: 4px; /* Rounded corners */
-  height: 750px; /* Adjust height as needed */
-  
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3); /* Adds a shadow for depth */
-  opacity: 0.7; /* Slight transparency */
+  border-left: 6px solid #FFC7C7;
+  border-radius: 4px;
+  height: 750px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+  opacity: 0.7; 
   border-image: none;
-  /* border-image: none; */ /* No gradient for border (if you want solid) */
-  
-  /* border-image: linear-gradient(to bottom, #FFD3D3, #FA8282) 1; */ /* Gradient matching background (option) */
 }
 
 .right {
@@ -115,19 +105,9 @@ h2 {
 }
 
 hr.solid {
-  /*border-top: 5px solid #FFD3D3; /* Light coral (current) */
-  /* border-top: 5px solid #CCCCCC; */ /* Muted Gray (option 1) */
-  /* border-top: 5px solid #E96B6B; */ /* Dark Coral (option 2) */
-  /* border-top: 5px solid #E2C275; */ /* Soft Gold (option 3) */
-  
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3); /* Adds a shadow for depth */
-  opacity: 0.7; /* Slight transparency */
-  
-  /* border-image: none; */ /* No gradient for border (if you want solid) */
-  /*border-image: linear-gradient(to bottom, blue, green) 1; /* Current gradient */
-   /*border-image: linear-gradient(to bottom, #FFD3D3, #FA8282) 1; */ /* Gradient matching background (option) */
-  
-  border-radius: 4px; /* Rounded corners */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3); 
+  opacity: 0.7;
+  border-radius: 4px;
 }
 
 .lparttop {
