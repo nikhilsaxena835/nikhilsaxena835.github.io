@@ -260,3 +260,22 @@ li:last-child {
   
   
 }
+
+/* Blockquote Styling */
+blockquote {
+  margin: 20px 0;                 /* Spacing around blockquote */
+  padding: 10px 10px;             /* Internal spacing */
+  border-left: 5px solid #080808; /* Left border for emphasis */
+  font-family: monospace;         /* Monospace font */
+  font-size: 15px;                /* Font size */
+  color: #444;                    /* Darker text color */
+  background-color: linear-gradient(to right, #f8adaa, #df6666);   /* Light gray background for emphasis */
+  width: 50%;                     /* Set width of the blockquote */
+  margin-left: auto;              /* Push to the right side */
+  margin-right: 0;                /* Align to right edge */
+}
+
+blockquote p {
+  margin: 0;                   /* Remove default margins on the <p> */
+  padding-left: 0;                  /* Ensure padding does not interfere */
+}

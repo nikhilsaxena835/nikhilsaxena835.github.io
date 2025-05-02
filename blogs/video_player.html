@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Title</title>
+  <link rel="stylesheet" href="blog-style.css">
+</head>
+<body>
+  <header class="blog-header">
+    <h1 class="blog-title">Writing a shader in Vulkan</h1>
+    <p class="blog-subtitle">Looking inside a media file</p>
+  </header>
+
+  <!-- Blog Content -->
+  <main class="blog-content">
+    <article>
+      <h2>What is inside a media file?</h2>
+      <p>
+        A media file is also called a container. MP4, AVI, MP3 etc are all containers. They contain tracks,
+        like video tracks, audio tracks and some metadata. A "stream" or a "track" is just a succession
+        of data elements made available over time. The data element of a stream is called a frame. <br>
+
+        One of the things the metadata tells is 
+        the codec to use. A video is essentially a "stream" of images. And how these images are encoded (and how to
+        decode them) is said by the codec. Codec (COded and DECoded) is an algorithm using which the stream was 
+        initially encoded. 
+      </p>
+
+      <h2>Section Heading</h2>
+      <p>
+        TO draw to the screen we use SDL.
+        Start writing your blog content here. You can add paragraphs to explain concepts, ideas, or personal experiences.
+      </p>
+
+      <h3>Subheading Example</h3>
+      <p>
+        Use subheadings to break down sections. Add multiple paragraphs to explain the topic further.
+      </p>
+
+      <!-- Example of an image -->
+      <figure>
+        <img src="your-image.jpg" alt="An example image" class="blog-image">
+        <figcaption>Image caption explaining the image</figcaption>
+      </figure>
+
+      <!-- Example of a code block -->
+      <pre class="code-block">
+        <code>
+          // Example of code snippet
+          function helloWorld() {
+              console.log("Hello, World!");
+          }
+        </code>
+      </pre>
+
+
+      <p>
+        Add a conclusion or a final thought to wrap up the blog.
+      </p>
+    </article>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="blog-footer">
+    <p>Written by <strong>Your Name</strong> | Published on <em>DD/MM/YYYY</em></p>
+  </footer>
+</body>
+</html>
