@@ -4,88 +4,171 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Good Technical Blogs</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Handjet:wght@100..900&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap">
     <style>
         /* Base styles */
+        :root {
+            --bg-main: #050505;
+            --bg-panel: #0b0b0d;
+            --bg-elevated: #121216;
+            --border-subtle: rgba(255, 255, 255, 0.1);
+            --border-strong: rgba(255, 255, 255, 0.18);
+            --text-primary: #f0f0f0;
+            --text-secondary: #cfcfcf;
+            --text-muted: #9a9a9a;
+            --accent: #ff7a6b;
+            --accent-soft: rgba(255, 122, 107, 0.12);
+            --font-body: "IBM Plex Sans", sans-serif;
+            --font-heading: "Space Grotesk", sans-serif;
+        }
+
         body {
-            font-family: "Roboto", sans-serif;
+            font-family: var(--font-body);
             margin: 0;
             padding: 0;
-            background: #ece0d0;
-            color: #333;
+            background: var(--bg-main);
+            color: var(--text-primary);
             line-height: 1.6;
         }
 
         .container {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-            background: #fff;
+            position: relative;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 30px;
+            background: radial-gradient(1200px circle at top, rgba(255, 122, 107, 0.08), transparent 55%),
+                var(--bg-panel);
             border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-strong);
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(255, 255, 255, 0.22) 1.5px, transparent 1.4px);
+            background-size: 94px 94px;
+            opacity: 0.18;
+            pointer-events: none;
+            z-index: 0;
+            animation: dots-drift 36s linear infinite;
+            will-change: background-position;
+        }
+
+        .container::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(255, 122, 107, 0.18) 1.5px, transparent 1.5px);
+            background-size: 140px 140px;
+            opacity: 0.52;
+            pointer-events: none;
+            z-index: 0;
+            animation: dots-drift-reverse 32s linear infinite;
+            will-change: background-position;
+        }
+
+        .container > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes dots-drift {
+            from {
+                background-position: 0 0;
+            }
+            to {
+                background-position: 120px 120px;
+            }
+        }
+
+        @keyframes dots-drift-reverse {
+            from {
+                background-position: 0 0;
+            }
+            to {
+                background-position: -160px 90px;
+            }
         }
 
         h1 {
-            font-family: "Pixelify Sans", sans-serif;
+            font-family: var(--font-heading);
             text-align: center;
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            color: #df6666;
+            font-size: 28px;
+            margin-bottom: 10px;
+            letter-spacing: 0.3px;
+            color: var(--text-primary);
+        }
+
+        .title-accent {
+            width: 48px;
+            height: 2px;
+            background: var(--accent);
+            margin: 0 auto 24px;
         }
 
         ul {
             list-style-type: none;
             padding: 0;
+            margin: 0;
         }
 
         li {
-            padding: 10px 15px;
-            margin: 10px 0;
-            background: #f8adaa;
-            border-radius: 8px;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-            font-family: "Handjet", sans-serif;
-            font-size: 1.2em;
-            transition: transform 0.3s ease, background-color 0.3s ease;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
         }
 
-        li:hover {
-            background-color: #df6666;
-            color: #fff;
-            transform: scale(1.02);
+        li:last-child {
+            border-bottom: none;
         }
 
         a {
             text-decoration: none;
-            color: inherit;
+            color: var(--text-primary);
+            transition: color 0.2s ease;
         }
 
         a:hover {
-            text-decoration: underline;
+            color: var(--accent);
         }
 
         .footer {
             text-align: center;
-            margin-top: 30px;
-            font-size: 0.9em;
-            color: #666;
+            margin-top: 24px;
+            font-size: 13px;
+            color: var(--text-muted);
         }
 
         .footer a {
-            color: #0077b5;
+            color: var(--text-primary);
             text-decoration: none;
         }
 
         .footer a:hover {
-            text-decoration: underline;
+            color: var(--accent);
+        }
+
+        @media (max-width: 720px) {
+            .container {
+                margin: 24px 16px;
+                padding: 24px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .container::before,
+            .container::after {
+                animation: none;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Good Technical Blogs</h1>
+        <div class="title-accent"></div>
         <ul>
             <!-- Add your blog entries here -->
             <li><a href="https://www.doc.ic.ac.uk/lab/cplus/cstyle.html" target="_blank">Recommended C Style and Coding Standards</a></li>
@@ -119,4 +202,3 @@
     </div>
 </body>
 </html>
-

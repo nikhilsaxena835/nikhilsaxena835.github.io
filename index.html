@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nikhil Saxena Portfolio</title>
-    <link rel="stylesheet" href="styles.css"> 
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
     <div class="full_page">
-        <img src="images/elephant.png" alt="Top Banner" style="margin-top: 10px; margin-left: 570px; width: 3%; height: 3%;">
         <div class="container">
+            <header class="page-header">
+                <img class="top-emblem" src="images/elephant.png" alt="Elephant emblem">
+            </header>
             <div class="main-content">
                 <div class="left">
                     <div class="lparttop">
@@ -25,6 +27,8 @@
                         I like to read non-fiction books, grow vegetables, cook and write software. I play volleyball and cricket. <br>
                         Significantly shaped by One Piece.<br>
                         <br>
+                        Currently at XYZ Company as ABC.<br>
+                        <br>
                         End goal : Experience everything this life has to offer and find true contentment in it.
                         <br><br>
                         Blogs that I like : <a href="ref_list.html">Link</a>
@@ -32,24 +36,26 @@
                         Blogs that I made : 
                         <br>
                         <h2> Technical Skills</h2><hr class="solid"><br>
-                        C++, Python, Java<br>
-                        HTML, CSS, Javascript, React<br>
-                        Bash, SQL<br>
-                        PyQt, Django
+                        C++, Java, Python, C<br>
+                        gRPC, Protobuf, Consul<br>
+                        Vulkan, SPIR-V, FFmpeg, OpenCV<br>
+                        ONNX Runtime, YOLOv8, NumPy<br>
+                        HTML, CSS, JavaScript, React<br>
+                        Bash, SQL, Django, PyQt
                     </div>
                     <div class="lpartbottom"><br>
                         <h2>Contact Me</h2><hr class="solid"><br>
                         <div class="contact-links">
-                            <a href="https://github.com/nikhilsaxena835" target="_blank">
+                            <a href="https://github.com/nikhilsaxena835" target="_blank" aria-label="GitHub">
                                 <i class="fab fa-github"></i>
                             </a>
-                            <a href="https://www.linkedin.com/in/nikhil-saxena-326549ba/" target="_blank">
+                            <a href="https://www.linkedin.com/in/nikhil-saxena-326549ba/" target="_blank" aria-label="LinkedIn">
                                 <i class="fab fa-linkedin"></i>
                             </a>
-                            <a href="tel:+91900924xxxx" class="text-link">
+                            <a href="tel:+91900924xxxx" class="text-link" aria-label="Phone">
                                 <i class="fas fa-phone"></i>
                             </a>
-                            <a href="mailto:nikhilsaxena835@gmail.com" class="text-link">
+                            <a href="mailto:nikhilsaxena835@gmail.com" class="text-link" aria-label="Email">
                                 <i class="fas fa-envelope"></i>
                             </a>
                         </div>
@@ -83,29 +89,57 @@
                         <h2>Projects</h2> <hr class="solid"><br>
                         <div class="projects-container">
                             <div class="project">
-                                <a href="https://github.com/nikhilsaxena835/MDLShare" target="_blank">
+                                <a class="project-media" href="https://github.com/nikhilsaxena835/MDLShare" target="_blank">
                                     <img src="images/mdl.png" alt="Project 1">
                                 </a>
-                                An IMDb clone that uses Django, HTML and CSS. It gives you personalised home page features, recommendations, stats, search, and much more.
+                                <div class="project-text">
+                                    <h3><a href="https://github.com/nikhilsaxena835/MDLShare" target="_blank">MDLShare</a></h3>
+                                    <p>An IMDb-style clone using Django, HTML, and CSS with personalized home page features, recommendations, stats, and search.</p>
+                                    <div class="project-tags">
+                                        <span>Django</span>
+                                        <span>Web</span>
+                                        <span>Search</span>
+                                    </div>
+                                </div>
                             </div>
                             <div class="project">
-                                <a href="https://github.com/nikhilsaxena835/smlp" target="_blank">
+                                <a class="project-media" href="https://github.com/nikhilsaxena835/smlp" target="_blank">
                                     <img src="images/smlp.png" alt="Project 2">
                                 </a>
-                                A GUI desktop application built using PyQt. It simulates various data structures and algorithms like Graphs, BSTs, Lists, etc., and also supports most standard operations on them.
+                                <div class="project-text">
+                                    <h3><a href="https://github.com/nikhilsaxena835/smlp" target="_blank">SMLP</a></h3>
+                                    <p>A PyQt desktop application that simulates data structures and algorithms including graphs, BSTs, and lists with standard operations.</p>
+                                    <div class="project-tags">
+                                        <span>PyQt</span>
+                                        <span>Desktop</span>
+                                        <span>Algorithms</span>
+                                    </div>
+                                </div>
                             </div>
 
 
                             <div class="project">
-                              <a href="https://github.com/nikhilsaxena835/POSIX_SHELL" target="_blank">
+                              <a class="project-media" href="https://github.com/nikhilsaxena835/POSIX_SHELL" target="_blank">
                                     <img src="images/posix.png" alt="Project 3">
                                 </a>
-                                A simple POSIX Shell.
+                                <div class="project-text">
+                                    <h3><a href="https://github.com/nikhilsaxena835/POSIX_SHELL" target="_blank">POSIX Shell</a></h3>
+                                    <p>A simple POSIX-compatible shell focusing on core command execution, pipes, and environment handling.</p>
+                                    <div class="project-tags">
+                                        <span>C</span>
+                                        <span>Systems</span>
+                                        <span>Terminal</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <button class="more-projects-btn" id="open-projects" type="button">
+                            More Projects
+                        </button>
                     </div>
                 </div>
             </div>
+            <div class="section-divider"></div>
             <div class="bottom-row">
                 <h2>More from Me</h2>
                 <ul>
@@ -115,25 +149,170 @@
                   <li>Painting is something I want to learn and grow as a hobby in future. </li>
                   <li>Evidently, I like 8-bit pixel fonts a lot too. </li>
                 </ul>
-                <p>
                 <div class="cursor-container">
-                <span class="text"><ul>
-                  <li>More to follow !</span></li>
-
-                </ul>
-                </span>
-                <span class="blinking-cursor"></span>
+                    <span class="text pixel-accent">More to follow!</span>
+                    <span class="blinking-cursor"></span>
                 </div>
-              </p>
             </div>
+            <div class="section-divider section-divider-narrow"></div>
             <blockquote>
                 <p>"Power comes in response to a need, not a desire." ~ Goku</p>
             </blockquote>
             
             <div class="footer">
-                <p style="padding-left: 380px;" by <a href="#">Nikhil Saxena</a> &copy; 2024</p>
+                <p>Made by <a href="#">Nikhil Saxena</a> &copy; 2024</p>
             </div>
         </div>
     </div>
+    <div class="modal" id="projects-modal" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div>
+                    <h2>All Projects</h2>
+                    <p class="modal-subtitle">Text-first list for quick scanning, including terminal projects.</p>
+                </div>
+                <button class="modal-close" id="close-projects" type="button" aria-label="Close projects list">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-project">
+                    <div class="modal-title">
+                        <a href="https://github.com/nikhilsaxena835/MDLShare" target="_blank">MDLShare</a>
+                        <span class="modal-tag">Web</span>
+                    </div>
+                    <p>An IMDb-style clone with personalized recommendations, stats, and search.</p>
+                    <ul class="modal-points">
+                        <li>Django backend with HTML/CSS front end</li>
+                        <li>Personalization logic and search flow</li>
+                    </ul>
+                </div>
+                <div class="modal-project">
+                    <div class="modal-title">
+                        <a href="https://github.com/nikhilsaxena835/smlp" target="_blank">SMLP</a>
+                        <span class="modal-tag">Desktop</span>
+                    </div>
+                    <p>Interactive data structures and algorithms simulator built with PyQt.</p>
+                    <ul class="modal-points">
+                        <li>Graphs, BSTs, lists, and standard operations</li>
+                        <li>Educational GUI for step-by-step visualization</li>
+                    </ul>
+                </div>
+                <div class="modal-project">
+                    <div class="modal-title">
+                        <a href="https://github.com/nikhilsaxena835/POSIX_SHELL" target="_blank">POSIX Shell (Custom Linux Shell)</a>
+                        <span class="modal-tag">Systems</span>
+                    </div>
+                    <p>POSIX-compliant shell with pipelines, redirection, job control, and signal handling.</p>
+                    <ul class="modal-points">
+                        <li>Pipelines, I/O redirection, job control, and signals (SIGINT, SIGTSTP, EOF)</li>
+                        <li>Built-ins: cd, echo, pwd, ls, pinfo, history, search</li>
+                    </ul>
+                    <pre class="terminal-snippet">$ ls | grep .cpp
+$ export PATH=/usr/local/bin</pre>
+                </div>
+                <div class="modal-project">
+                    <div class="modal-title">
+                        <a href="https://github.com/nikhilsaxena835/Kafka-PubSub" target="_blank">Distributed Publish-Subscribe Messaging Platform</a>
+                        <span class="modal-tag">Distributed</span>
+                    </div>
+                    <p>Horizontal-scaling pub-sub with consumer groups and fault-tolerant messaging.</p>
+                    <ul class="modal-points">
+                        <li>Leader election, heartbeats, offset tracking, and group rebalancing</li>
+                        <li>WAL-based durability with replay for at-least-once delivery</li>
+                    </ul>
+                    <pre class="terminal-snippet">producer&gt; sent: order_created
+consumer&gt; received: order_created</pre>
+                </div>
+                <div class="modal-project">
+                    <div class="modal-title">
+                        <a href="https://github.com/nikhilsaxena835/Vulkan-Shader" target="_blank">Vulkan-based Video Processing Framework</a>
+                        <span class="modal-tag">Graphics</span>
+                    </div>
+                    <p>GPU-accelerated video processing with shader-driven, per-pixel effects.</p>
+                    <ul class="modal-points">
+                        <li>Vulkan + SPIR-V pipeline with optimized memory and synchronization</li>
+                        <li>YOLOv8 + ONNX Runtime for object-aware, multi-shader effects</li>
+                    </ul>
+                </div>
+                <div class="modal-project">
+                    <div class="modal-title">
+                        <a href="https://github.com/nikhilsaxena835/Projects/tree/main/P3" target="_blank">Real-Time Low-Bandwidth Video Calling System</a>
+                        <span class="modal-tag">Vision</span>
+                    </div>
+                    <p>Low-bandwidth video transmission using PCA-based compression (Eigenfaces).</p>
+                    <ul class="modal-points">
+                        <li>~80% frame compression with recognizable reconstruction at the receiver</li>
+                        <li>YOLOv8 face detection for aligned ROI before projection</li>
+                    </ul>
+                </div>
+                <div class="modal-project">
+                    <div class="modal-title">
+                        <a href="https://github.com/nikhilsaxena835/Projects/blob/main/dsaps/seam_carving.cpp" target="_blank">Content Aware Image Resizing</a>
+                        <span class="modal-tag">Vision</span>
+                    </div>
+                    <p>Seam carving for content-aware resizing using energy maps and dynamic programming.</p>
+                    <ul class="modal-points">
+                        <li>Scharr/Sobel energy maps to preserve high-frequency regions</li>
+                        <li>DP-based seam selection for efficient resizing</li>
+                    </ul>
+                </div>
+                <div class="modal-project">
+                    <div class="modal-title">
+                        <a href="https://github.com/nikhilsaxena835/Projects/tree/main/P3" target="_blank">SecurePay Gateway</a>
+                        <span class="modal-tag">Distributed</span>
+                    </div>
+                    <p>Secure distributed payment gateway simulating bank-client transfers.</p>
+                    <ul class="modal-points">
+                        <li>gRPC services with SSL/TLS and interceptor-based auth/logging</li>
+                        <li>Two-phase commit with idempotency for reliable transactions</li>
+                    </ul>
+                </div>
+                <div class="modal-project">
+                    <div class="modal-title">
+                        <a href="https://github.com/nikhilsaxena835/Projects/tree/main/SNS2" target="_blank">Secure TeleMedical Communication</a>
+                        <span class="modal-tag">Security</span>
+                    </div>
+                    <p>Encrypted doctor-patient communication with authenticated sessions.</p>
+                    <ul class="modal-points">
+                        <li>ElGamal key exchange with AES-256 encrypted messaging</li>
+                        <li>Digital signatures and timestamp checks to prevent replay</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const modal = document.getElementById("projects-modal");
+        const openProjects = document.getElementById("open-projects");
+        const closeProjects = document.getElementById("close-projects");
+
+        const openModal = () => {
+            modal.classList.add("open");
+            modal.setAttribute("aria-hidden", "false");
+            document.body.classList.add("no-scroll");
+        };
+
+        const closeModal = () => {
+            modal.classList.remove("open");
+            modal.setAttribute("aria-hidden", "true");
+            document.body.classList.remove("no-scroll");
+        };
+
+        openProjects.addEventListener("click", openModal);
+        closeProjects.addEventListener("click", closeModal);
+
+        modal.addEventListener("click", (event) => {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape" && modal.classList.contains("open")) {
+                closeModal();
+            }
+        });
+    </script>
 </body>
 </html>
