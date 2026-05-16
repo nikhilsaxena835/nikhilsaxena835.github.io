@@ -19,32 +19,42 @@
                     <div class="lparttop">
                         <img class="imgdp" src="images/me.png" width="200px" height="200px">
                     </div>
-                    <br><br>
+                    
                     
                     <div class="lpartmiddle"><br>
-                        <h2>About Me</h2><hr class="solid"><br>
-                        Engineer by choice. Currently in IIITH, enrolled in MTech CSE programme.<br>
-                        I like to read non-fiction books, grow vegetables, cook and write software. I play volleyball and cricket. <br>
-                        Significantly shaped by One Piece.<br>
-                        <br>
-                        Currently at XYZ Company as ABC.<br>
-                        <br>
-                        End goal : Experience everything this life has to offer and find true contentment in it.
-                        <br><br>
-                        Blogs that I like : <a href="ref_list.html">Link</a>
-                        <br>
-                        Blogs that I made : 
-                        <br>
-                        <h2> Technical Skills</h2><hr class="solid"><br>
-                        C++, Java, Python, C<br>
-                        gRPC, Protobuf, Consul<br>
-                        Vulkan, SPIR-V, FFmpeg, OpenCV<br>
-                        ONNX Runtime, YOLOv8, NumPy<br>
-                        HTML, CSS, JavaScript, React<br>
-                        Bash, SQL, Django, PyQt
-                    </div>
+                        
+                        <h2>About Me</h2><hr class="solid">
+                        <div class="about-text">
+                            <p>Engineer by choice. I like to read non-fiction books, grow vegetables, cook and write software. 
+                                I play volleyball and cricket. Significantly shaped by One Piece.</p>
+                            <p>Currently at XYZ Company as ABC.</p>
+                            <p>End goal: Experience everything this life has to offer and find true contentment in it.</p>
+                            <p class="blog-links">Blogs that I like: <a href="ref_list.html">Link</a><br>Blogs that I made:</p>
+                        </div>
+
+                        
+                        <h2>Technical Skills</h2><hr class="solid">
+                        <div class="skills-grid">
+                            <div class="skill-category">
+                                <strong>Languages</strong>
+                                <span>C++, Java, Python, C, Bash, SQL</span>
+                            </div>
+                            <div class="skill-category">
+                                <strong>Systems & Distributed</strong>
+                                <span>gRPC, Protobuf, Consul, Linux API</span>
+                            </div>
+                            <div class="skill-category">
+                                <strong>Graphics & Vision</strong>
+                                <span>Vulkan, SPIR-V, FFmpeg, OpenCV, ONNX Runtime, YOLOv8</span>
+                            </div>
+                            <div class="skill-category">
+                                <strong>Web & GUI</strong>
+                                <span>HTML, CSS, JavaScript, React, Django, PyQt</span>
+                            </div>
+                        </div>
+</div>
                     <div class="lpartbottom"><br>
-                        <h2>Contact Me</h2><hr class="solid"><br>
+                        <h2>Contact Me</h2><hr class="solid">
                         <div class="contact-links">
                             <a href="https://github.com/nikhilsaxena835" target="_blank" aria-label="GitHub">
                                 <i class="fab fa-github"></i>
@@ -67,26 +77,21 @@
                         <h1>NIKHIL SAXENA</h1>
                     </div>
                     <div class="rpartmiddle">
-                        <h2>Education</h2> <hr class="solid"><br>
-                        <ul>
+                        
+                        <h2>Education</h2> <hr class="solid">
+                        <ul class="edu-list">
                             <li>
-                              <p style="font-size:18px"> International Institute of Information Technology, Hyderabad</p>
-                                
-                                <p style="font-size:16px"><i>Master of Technology, CSE (2024-2026)</i></p>
-                                
-                            </li><br>
+                              <p class="edu-title">International Institute of Information Technology, Hyderabad</p>
+                              <p class="edu-meta">Master of Technology, CSE (2024-2026)</p>
+                            </li>
                             <li>
-                              
-                              <p style="font-size:18px"> Shri Vaishnav Vidyapeeth Vishwadiyalaya, Indore</p>
-                                
-                                <p style="font-size:16px"><i>Bachelor of Technology, CSE (2019-2023)</i></p>
+                              <p class="edu-title">Shri Vaishnav Vidyapeeth Vishwadiyalaya, Indore</p>
+                              <p class="edu-meta">Bachelor of Technology, CSE (2019-2023)</p>
                             </li>
                         </ul>
-                    </div>
-                    <br>
-                    <br>
+</div>
                     <div class="rpartbottom">
-                        <h2>Projects</h2> <hr class="solid"><br>
+                        <h2>Projects</h2> <hr class="solid">
                         <div class="projects-container">
                             <div class="project">
                                 <a class="project-media" href="https://github.com/nikhilsaxena835/MDLShare" target="_blank">
@@ -118,10 +123,21 @@
                             </div>
 
 
+                            
                             <div class="project">
-                              <a class="project-media" href="https://github.com/nikhilsaxena835/POSIX_SHELL" target="_blank">
-                                    <img src="images/posix.png" alt="Project 3">
-                                </a>
+                                <div class="project-media terminal-mockup">
+                                    <div class="terminal-header">
+                                        <span class="dot red"></span>
+                                        <span class="dot yellow"></span>
+                                        <span class="dot green"></span>
+                                    </div>
+                                    <div class="terminal-body">
+                                        <span class="prompt">nikhil@linux:~$</span> ./shell<br>
+                                        <span class="prompt">POSIX&gt;</span> ls -l | grep .c<br>
+                                        <span class="output">-rw-r--r-- 1 nikhil users 4096 main.c</span><br>
+                                        <span class="prompt">POSIX&gt;</span> _
+                                    </div>
+                                </div>
                                 <div class="project-text">
                                     <h3><a href="https://github.com/nikhilsaxena835/POSIX_SHELL" target="_blank">POSIX Shell</a></h3>
                                     <p>A simple POSIX-compatible shell focusing on core command execution, pipes, and environment handling.</p>
@@ -131,6 +147,8 @@
                                         <span>Terminal</span>
                                     </div>
                                 </div>
+                            </div>
+
                             </div>
                         </div>
                         <button class="more-projects-btn" id="open-projects" type="button">
