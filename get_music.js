@@ -467,7 +467,11 @@
         method: 'POST',
         body: JSON.stringify({ username: saved }),
       })
-        .then(() => enterDashboard())
+        .then((data) => {
+          currentUser = data.user.username;
+          localStorage.setItem('wad_username', currentUser);
+          enterDashboard();
+        })
         .catch(() => showView('view-onboarding'));
     }
   }

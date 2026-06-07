@@ -11,12 +11,13 @@ export async function onRequestPost(context) {
     }
 
     const db = context.env.DB;
+    const lowerUser = username.toLowerCase();
 
     await db
       .prepare(
         'INSERT OR REPLACE INTO UserAlbum (username, album_id, status) VALUES (?, ?, ?)'
       )
-      .bind(username, album_id, status)
+      .bind(lowerUser, album_id, status)
       .run();
 
     return Response.json({ ok: true });
