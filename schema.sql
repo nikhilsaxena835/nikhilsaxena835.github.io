@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS artists (
 CREATE TABLE IF NOT EXISTS albums (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT NOT NULL,
-    artist_id INTEGER NOT NULL REFERENCES artists(id) ON DELETE CASCADE,
+    artist_id INTEGER NOT NULL,
     musicbrainz_release_group_id TEXT UNIQUE,
     release_year INTEGER,
     release_country TEXT,               -- from MusicBrainz release metadata
@@ -42,12 +42,12 @@ CREATE TABLE IF NOT EXISTS genres (
 
 -- Album ↔ Genre junction
 CREATE TABLE IF NOT EXISTS album_genres (
-    album_id INTEGER REFERENCES albums(id) ON DELETE CASCADE,
-    genre_id INTEGER REFERENCES genres(id) ON DELETE CASCADE,
+    album_id INTEGER,
+    genre_id INTEGER,
     PRIMARY KEY (album_id, genre_id)
 );
 
--- Users (unchanged)
+-- Users
 CREATE TABLE IF NOT EXISTS User (
     username TEXT PRIMARY KEY,
     created_at TEXT DEFAULT (datetime('now'))
@@ -59,15 +59,16 @@ CREATE TABLE IF NOT EXISTS UserAlbum (
     album_id INTEGER NOT NULL,
     status TEXT NOT NULL CHECK(status IN ('LIKED','DISLIKED','SKIPPED')),
     timestamp TEXT DEFAULT (datetime('now')),
-    PRIMARY KEY (username, album_id),
-    FOREIGN KEY (username) REFERENCES User(username),
-    FOREIGN KEY (album_id) REFERENCES albums(id)
+    PRIMARY KEY (username, album_id)
 );
 
 -- Indexes
+CREATE INDEX IF NOT EXISTS idx_albums_artist ON albums(artist_id);
 CREATE INDEX IF NOT EXISTS idx_albums_country ON albums(release_country);
 CREATE INDEX IF NOT EXISTS idx_albums_year ON albums(release_year);
 CREATE INDEX IF NOT EXISTS idx_albums_popularity ON albums(popularity_score);
 CREATE INDEX IF NOT EXISTS idx_artists_country ON artists(country);
+CREATE INDEX IF NOT EXISTS idx_albumgenres_album ON album_genres(album_id);
+CREATE INDEX IF NOT EXISTS idx_albumgenres_genre ON album_genres(genre_id);
 CREATE INDEX IF NOT EXISTS idx_useralb_user ON UserAlbum(username);
 CREATE INDEX IF NOT EXISTS idx_useralb_album ON UserAlbum(album_id);

@@ -5,7 +5,7 @@ pages_build_output_dir = "."
 [[d1_databases]]
 binding = "DB"
 database_name = "world-album-db"
-database_id = "6c292c43-78d8-4dd2-af38-2d0ed2ccd91d"
+database_id = "263cea64-a8a3-411c-88dc-7f8abf7e4e6a"
 
 [[kv_namespaces]]
 binding = "CACHE"
