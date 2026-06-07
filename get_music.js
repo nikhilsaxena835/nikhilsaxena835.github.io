@@ -45,8 +45,19 @@
 
   // ───── API Client ─────
   async function api(path, options = {}) {
+    // Bypass Cloudflare Edge caching for dynamic data
+    if ((!options.method || options.method === 'GET') && !path.includes('/api/filters')) {
+      const separator = path.includes('?') ? '&' : '?';
+      path += `${separator}_t=${Date.now()}`;
+    }
+
     const res = await fetch(path, {
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 
+        'Content-Type': 'application/json',
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+        'Pragma': 'no-cache'
+      },
+      cache: 'no-store',
       ...options,
     });
     const data = await res.json();
