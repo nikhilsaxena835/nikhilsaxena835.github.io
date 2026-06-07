@@ -13,6 +13,25 @@ export async function onRequestPost(context) {
     const db = context.env.DB;
     const lowerUser = username.toLowerCase();
 
+    // ── Diagnostic: check both FK targets before inserting ──
+    const userRow = await db
+      .prepare('SELECT username FROM User WHERE username = ?')
+      .bind(lowerUser)
+      .first();
+
+    const albumRow = await db
+      .prepare('SELECT id FROM albums WHERE id = ?')
+      .bind(album_id)
+      .first();
+
+    if (!userRow || !albumRow) {
+      return Response.json({
+        error: `FK pre-check failed. user "${lowerUser}" found: ${!!userRow}, album_id ${album_id} found: ${!!albumRow}`,
+        debug: { userRow, albumRow, sentUsername: username, sentAlbumId: album_id }
+      }, { status: 400 });
+    }
+
+    // ── If both exist, proceed with the insert ──
     await db
       .prepare(
         'INSERT OR REPLACE INTO UserAlbum (username, album_id, status) VALUES (?, ?, ?)'
