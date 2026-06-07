@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Album Discovery</title>
+    <meta name="description"
+        content="Discover music from around the world. No algorithms. No recommendations. Just pure exploration.">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap">
+    <link rel="stylesheet" href="get_music.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+
+    <!-- View: Onboarding -->
+    <div id="view-onboarding" class="view active">
+        <div class="onboarding-container">
+            <h1 class="app-title">World Album Discovery</h1>
+            <div class="title-accent"></div>
+            <p class="app-tagline">
+                Discover music from around the world.<br>
+                No algorithms. No recommendations.<br>
+                Just pure exploration.
+            </p>
+            <form id="username-form" class="username-form" autocomplete="off">
+                <input type="text" id="username-input" placeholder="choose a username" maxlength="20"
+                    autocomplete="off" spellcheck="false" aria-label="Username">
+                <button id="username-submit" type="submit">Enter</button>
+            </form>
+            <p id="username-error" class="error-text" aria-live="polite"></p>
+            <p class="onboarding-hint">3–20 characters. Letters, numbers, underscores.</p>
+        </div>
+    </div>
+
+    <!-- View: Dashboard -->
+    <div id="view-dashboard" class="view">
+        <div class="dashboard-container">
+            <header class="dashboard-header">
+                <div class="user-info">
+                    <h1 id="dash-username" class="dash-username"></h1>
+                    <p id="dash-passport" class="passport-summary"></p>
+                </div>
+                <button id="dash-logout" class="text-btn" type="button" aria-label="Change user">← Change
+                    User</button>
+            </header>
+
+            <section class="modes-section">
+                <h2>Discover</h2>
+                <div class="title-accent"></div>
+                <div class="modes-grid" id="modes-grid">
+                    <button class="mode-card" data-mode="daily" id="mode-daily" type="button">
+                        <span class="mode-icon">🌅</span>
+                        <span class="mode-title">Daily Album</span>
+                        <span class="mode-desc">Today's curated pick</span>
+                    </button>
+                    <button class="mode-card" data-mode="discover" id="mode-discover" type="button">
+                        <span class="mode-icon">🔍</span>
+                        <span class="mode-title">Filtered Discovery</span>
+                        <span class="mode-desc">Country, genre, decade</span>
+                    </button>
+                    <button class="mode-card" data-mode="world-tour" id="mode-world-tour" type="button">
+                        <span class="mode-icon">🌍</span>
+                        <span class="mode-title">World Tour</span>
+                        <span class="mode-desc">Visit every country</span>
+                    </button>
+                    <button class="mode-card" data-mode="hidden-gem" id="mode-hidden-gem" type="button">
+                        <span class="mode-icon">💎</span>
+                        <span class="mode-title">Hidden Gem</span>
+                        <span class="mode-desc">Underrated masterpieces</span>
+                    </button>
+                </div>
+            </section>
+
+            <section class="history-section" id="history-section">
+                <h2>History</h2>
+                <div class="title-accent"></div>
+                <div class="history-tabs">
+                    <button class="history-tab active" data-tab="liked" id="tab-liked" type="button">Liked</button>
+                    <button class="history-tab" data-tab="skipped" id="tab-skipped" type="button">Skipped</button>
+                </div>
+                <div id="history-content" class="history-list"></div>
+                <p id="history-empty" class="empty-state">No albums yet. Start exploring!</p>
+            </section>
+        </div>
+    </div>
+
+    <!-- View: Discovery Session -->
+    <div id="view-session" class="view">
+        <div class="session-container">
+            <button id="session-back" class="back-btn" type="button" aria-label="Back to dashboard">← Back</button>
+
+            <div id="filter-controls" class="filter-controls hidden">
+                <select id="filter-country" aria-label="Country filter">
+                    <option value="">Any Country</option>
+                </select>
+                <select id="filter-genre" aria-label="Genre filter">
+                    <option value="">Any Genre</option>
+                </select>
+                <select id="filter-decade" aria-label="Decade filter">
+                    <option value="">Any Decade</option>
+                </select>
+                <button id="filter-apply" class="filter-btn" type="button">Find Album</button>
+            </div>
+
+            <div id="album-card" class="album-card hidden">
+                <div id="album-art-container" class="album-art-container">
+                    <img id="album-art" src="" alt="" class="album-art">
+                    <div id="album-art-fallback" class="album-art-fallback">
+                        <span>🎵</span>
+                    </div>
+                </div>
+                <div class="album-info">
+                    <h2 id="album-title" class="album-title"></h2>
+                    <p id="album-artist" class="album-artist"></p>
+                    <div class="album-meta">
+                        <span id="album-year"></span>
+                        <span class="meta-dot">·</span>
+                        <span id="album-country"></span>
+                    </div>
+                    <div id="album-genres" class="album-genres"></div>
+                    <p id="album-description" class="album-description"></p>
+                </div>
+
+                <div class="action-bar">
+                    <button class="action-btn action-dislike" data-action="DISLIKED" id="btn-dislike" type="button"
+                        title="Dislike">
+                        <span class="action-icon">👎</span>
+                        <span class="action-label">Dislike</span>
+                    </button>
+                    <button class="action-btn action-skip" data-action="SKIPPED" id="btn-skip" type="button"
+                        title="Skip">
+                        <span class="action-icon">⏭️</span>
+                        <span class="action-label">Skip</span>
+                    </button>
+                    <button class="action-btn action-like" data-action="LIKED" id="btn-like" type="button"
+                        title="Like">
+                        <span class="action-icon">👍</span>
+                        <span class="action-label">Like</span>
+                    </button>
+                </div>
+            </div>
+
+            <div id="session-loading" class="session-message">
+                <span class="loading-dot">·</span><span class="loading-dot">·</span><span
+                    class="loading-dot">·</span>
+            </div>
+
+            <div id="session-error" class="session-message hidden"></div>
+        </div>
+    </div>
+
+    <script src="get_music.js"></script>
+</body>
+
+</html>

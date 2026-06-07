@@ -1,0 +1,12 @@
+name = "world-album-discovery"
+compatibility_date = "2026-05-03"
+pages_build_output_dir = "."
+
+[[d1_databases]]
+binding = "DB"
+database_name = "world-album-db"
+database_id = "3bf5d2a8-7e71-4b5c-82a7-4e053f36c538"
+
+[[kv_namespaces]]
+binding = "CACHE"
+id = "c061e94b0adf4f089aabf14e9227e5b9"
