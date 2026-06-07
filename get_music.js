@@ -51,6 +51,8 @@
       path += `${separator}_t=${Date.now()}`;
     }
 
+    console.log(`[API Request] ${options.method || 'GET'} ${path}`, options.body ? JSON.parse(options.body) : '');
+
     const res = await fetch(path, {
       headers: { 
         'Content-Type': 'application/json',
@@ -61,6 +63,9 @@
       ...options,
     });
     const data = await res.json();
+    
+    console.log(`[API Response] ${res.status}`, data);
+
     if (!res.ok && !data.noResults) {
       throw new Error(data.error || `API error: ${res.status}`);
     }
@@ -424,6 +429,9 @@
           }
         } catch (err) {
           console.error('Interaction failed:', err);
+          const errorEl = $('session-error');
+          errorEl.textContent = `Interaction Error: ${err.message} (Are you sure D1 is bound?)`;
+          errorEl.classList.remove('hidden');
         } finally {
           document.querySelectorAll('.action-btn').forEach((b) => (b.disabled = false));
         }
