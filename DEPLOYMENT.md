@@ -7,7 +7,7 @@ Historically, this site was hosted on GitHub Pages with Cloudflare acting purely
 
 The portfolio leverages the following Cloudflare ecosystem components:
 - **Cloudflare Pages**: Hosts the static frontend (`index.html`, CSS, JS, images) natively.
-- **Cloudflare Pages Functions**: Serverless API routes (located in `functions/api/<tool-name>/`) that execute at the edge.
+- **Cloudflare Pages Functions**: Serverless API routes (located in `functions/api/`) that execute at the edge.
 - **Cloudflare D1**: Serverless SQLite databases for structured data storage (e.g., app data, user history).
 - **Cloudflare KV**: Global key-value data store used for fast edge caching.
 

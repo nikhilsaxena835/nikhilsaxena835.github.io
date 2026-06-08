@@ -1,9 +1,0 @@
-{
-  "name": "world-album-seed",
-  "type": "module",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "seed": "node seed.js"
-  }
-}

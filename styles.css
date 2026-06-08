@@ -42,7 +42,10 @@ ul {
   --content-width: 1120px;
 }
 
-
+@font-face {
+  font-family: myFirstFont;
+  src: url(c.ttf);
+}
 
 /* Full-page background */
 .full_page {

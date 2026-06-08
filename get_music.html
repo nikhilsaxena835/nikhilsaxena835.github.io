@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Album Discovery</title>
+    <title>World Album Discovery</title>
     <meta name="description"
         content="Discover music from around the world. No algorithms. No recommendations. Just pure exploration.">
     <link rel="stylesheet"
@@ -12,8 +12,8 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap">
-    <link rel="stylesheet" href="album-discovery.css">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="get_music.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 
 <body>
@@ -21,7 +21,7 @@
     <!-- View: Onboarding -->
     <div id="view-onboarding" class="view active">
         <div class="onboarding-container">
-            <h1 class="app-title">Album Discovery</h1>
+            <h1 class="app-title">World Album Discovery</h1>
             <div class="title-accent"></div>
             <p class="app-tagline">
                 Discover music from around the world.<br>
@@ -36,7 +36,7 @@
             <p id="username-error" class="error-text" aria-live="polite"></p>
             <p class="onboarding-hint">3–20 characters. Letters, numbers, underscores.</p>
             <div class="docs-links">
-                <a href="/index.html" class="text-btn doc-btn">← Return to Home</a>
+                <a href="index.html" class="text-btn doc-btn">← Return to Home</a>
                 <button type="button" class="text-btn doc-btn" onclick="openModal('modal-what-is-this')">What is this
                     tool? </button>
                 <button type="button" class="text-btn doc-btn" onclick="openModal('modal-how-to-use')">How to use
@@ -96,7 +96,7 @@
             </section>
 
             <footer class="dashboard-footer docs-links">
-                <a href="/index.html" class="text-btn doc-btn">← Return to Home</a>
+                <a href="index.html" class="text-btn doc-btn">← Return to Home</a>
                 <button type="button" class="text-btn doc-btn" onclick="openModal('modal-what-is-this')">What is this
                     tool? </button>
                 <button type="button" class="text-btn doc-btn" onclick="openModal('modal-how-to-use')">How to use
@@ -196,7 +196,7 @@
                     The curation is via Wikidata SPARQL, Last.fm, and MusicBrainz. The app itself is fully
                     serverless, running on Cloudflare Pages, KV Cache, and D1 (SQLite).
                 </p>
-                <a href="../../blogs/album_tool.html" class="text-btn doc-btn" target="_blank"
+                <a href="blogs/technical_details.html" class="text-btn doc-btn" target="_blank"
                     style="color: var(--accent); margin-top: 8px; display: inline-block;">Read the Full Technical
                     Details →</a>
             </div>
@@ -234,7 +234,7 @@
         </div>
     </div>
 
-    <script src="album-discovery.js"></script>
+    <script src="get_music.js"></script>
 </body>
 
 </html>
