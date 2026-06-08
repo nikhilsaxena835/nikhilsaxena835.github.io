@@ -2,7 +2,7 @@
  * World Album Discovery — Client Logic
  *
  * State machine: ONBOARDING → DASHBOARD → SESSION
- * All API calls go to /api/* (same origin, handled by Cloudflare Pages Functions).
+ * All API calls go to /api/album-discovery/* (same origin, handled by Cloudflare Pages Functions).
  */
 
 // ───── Global Modal Functions ─────
@@ -57,7 +57,7 @@ window.closeModal = function(id) {
   // ───── API Client ─────
   async function api(path, options = {}) {
     // Bypass Cloudflare Edge caching for dynamic data
-    if ((!options.method || options.method === 'GET') && !path.includes('/api/filters')) {
+    if ((!options.method || options.method === 'GET') && !path.includes('/api/album-discovery/filters')) {
       const separator = path.includes('?') ? '&' : '?';
       path += `${separator}_t=${Date.now()}`;
     }
@@ -119,7 +119,7 @@ window.closeModal = function(id) {
       }
 
       try {
-        const data = await api('/api/user', {
+        const data = await api('/api/album-discovery/user', {
           method: 'POST',
           body: JSON.stringify({ username }),
         });
@@ -147,8 +147,8 @@ window.closeModal = function(id) {
     // Fetch stats + history in parallel
     try {
       const [stats, history] = await Promise.all([
-        api(`/api/stats?username=${encodeURIComponent(currentUser)}`),
-        api(`/api/history?username=${encodeURIComponent(currentUser)}`),
+        api(`/api/album-discovery/stats?username=${encodeURIComponent(currentUser)}`),
+        api(`/api/album-discovery/history?username=${encodeURIComponent(currentUser)}`),
       ]);
 
       // Passport summary
@@ -255,7 +255,7 @@ window.closeModal = function(id) {
 
   async function loadFilters() {
     try {
-      const data = await api('/api/filters');
+      const data = await api('/api/album-discovery/filters');
 
       const countrySelect = $('filter-country');
       countrySelect.innerHTML = '<option value="">Any Country</option>';
@@ -305,13 +305,13 @@ window.closeModal = function(id) {
 
       switch (currentMode) {
         case 'daily':
-          data = await api(`/api/daily?username=${user}`);
+          data = await api(`/api/album-discovery/daily?username=${user}`);
           break;
         case 'discover': {
           const country = $('filter-country').value;
           const genre = $('filter-genre').value;
           const decade = $('filter-decade').value;
-          let url = `/api/discover?username=${user}`;
+          let url = `/api/album-discovery/discover?username=${user}`;
           if (country) url += `&country=${encodeURIComponent(country)}`;
           if (genre) url += `&genre=${encodeURIComponent(genre)}`;
           if (decade) url += `&decade=${encodeURIComponent(decade)}`;
@@ -319,10 +319,10 @@ window.closeModal = function(id) {
           break;
         }
         case 'world-tour':
-          data = await api(`/api/world-tour?username=${user}`);
+          data = await api(`/api/album-discovery/world-tour?username=${user}`);
           break;
         case 'hidden-gem':
-          data = await api(`/api/hidden-gem?username=${user}`);
+          data = await api(`/api/album-discovery/hidden-gem?username=${user}`);
           break;
         default:
           throw new Error('Unknown mode');
@@ -421,7 +421,7 @@ window.closeModal = function(id) {
         document.querySelectorAll('.action-btn').forEach((b) => (b.disabled = true));
 
         try {
-          await api('/api/interact', {
+          await api('/api/album-discovery/interact', {
             method: 'POST',
             body: JSON.stringify({
               username: currentUser,
@@ -474,7 +474,7 @@ window.closeModal = function(id) {
     if (saved) {
       currentUser = saved;
       // Verify user still exists
-      api('/api/user', {
+      api('/api/album-discovery/user', {
         method: 'POST',
         body: JSON.stringify({ username: saved }),
       })

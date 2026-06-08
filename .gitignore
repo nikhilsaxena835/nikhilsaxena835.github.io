@@ -9,17 +9,13 @@ node_modules/
 .wrangler/
 
 # Large Database Seed files (don't push massive SQL dumps)
-*.sql
-!schema.sql
+tools/*/data/seed/seed.sql
+tools/*/data/seed/country_artist_data/
 
 # Scratchpads & AI logs
 temp.md
 task.md
 
-# Private and Backup folders
-private/
-backups/
-seed/
 # OS generated files
 .DS_Store
 .DS_Store?
