@@ -9,41 +9,61 @@
 <body>
   <!-- Header Section -->
   <header class="blog-header">
-    <h1 class="blog-title">Technical Architecture</h1>
-    <p class="blog-subtitle">Behind the scenes of World Album Discovery</p>
+    <h1 class="blog-title">Architecture of Album Discovery Tool</h1>
+    <p class="blog-subtitle">Building an anti-personalization engine</p>
   </header>
 
   <!-- Blog Content -->
   <main class="blog-content">
     <article>
-      <h2>How It Works</h2>
       <p>
-        To achieve an unbiased and high-quality collection of albums, the platform relies on a sophisticated data pipeline and a serverless edge architecture.
+        Music recommendation systems are usually built to learn your taste. That works well when the goal is to keep someone listening and retaining them to the platform, but it is not always the best design when the goal is broad discovery. If you listen to American pop, the algorithm feeds you more American pop. Album Discovery was built to solve this by completely removing recommendation algorithms, taste profiling, and personal biases. Instead, it relies on pure geographical curation and serendipity. You might discover Japanese City Pop one day, Indian Carnatic music the next, and Brazilian Jazz after that. It exposes people to great albums from many countries, languages, and eras without personalizing itself around their past listening history.
+      </p>
+      
+      <p>
+        The recommendation engine should not say, “Because you liked X, here is more like X.”
       </p>
 
-      <h3>1. Initial Artist Seeding (<code>getArtists.py</code>)</h3>
       <p>
-        The curation begins with geography. Using a Python script (<code>getArtists.py</code>), the platform executes highly optimized SPARQL queries against <strong>Wikidata</strong>. It fetches the top 50 musical artists and groups from over 20 different countries. The script strictly filters for entities classified as musicians, singers, composers, or musical groups, sorting them by their Wikipedia site link count to gauge historical or cultural relevance.
+        It should say, “Here is a great album you may not have explored yet.”
       </p>
 
-      <h3>2. Data Enrichment and Validation (<code>seed.js</code>)</h3>
+      <h2>1. Sourcing Artists for every country</h2>
       <p>
-        Once the raw list of artists is gathered, a Node.js pipeline (<code>seed.js</code>) takes over to validate and enrich the data. This pipeline interacts with two major external APIs:
+        Most standard API "Top 100" charts heavily favor Western artists. Instead, this tool uses a data pipeline that begins with executing highly optimized SPARQL queries against Wikidata. Wikidata is useful because it supports structured queries. That makes it possible to ask questions like:
       </p>
       <ul>
-        <li><strong>Last.fm API:</strong> Used to strictly validate the artist's global listener count. High thresholds (e.g., a minimum of 30,000 listeners) are enforced to systematically filter out non-musicians, politicians, or vanity projects that might have slipped through Wikidata.</li>
-        <li><strong>MusicBrainz API:</strong> For the validated artists, the pipeline queries MusicBrainz to fetch their official "Studio Albums" (explicitly rejecting live albums, compilations, and soundtracks). It then fetches the corresponding cover art via the Cover Art Archive.</li>
+        <li>Which humans are musicians and have a MusicBrainz ID?</li>
+        <li>Which groups originated in a specific country?</li>
+        <li>Which artists have enough sitelinks to suggest they are notable?</li>
       </ul>
-
-      <h3>3. Serverless Infrastructure</h3>
       <p>
-        The entire application is hosted on <strong>Cloudflare Pages</strong> using a serverless architecture, which means there is no traditional backend server running continuously.
+        The pipeline fetches the top musical artists and groups from different countries. The script strictly filters for entities explicitly classified as musicians, singers, composers, or musical groups. Currently, it ranks them by their Wikipedia site link count (how many different language wikis have an article about them) to gauge historical and cultural relevance, rather than current commercial popularity. In the next update, I shall move beyond this band-aid approach.
+      </p>
+
+      <h2>2. The Enrichment and Validation Pipeline</h2>
+      <p>
+        Once the raw list of artists is gathered, a custom Node.js pipeline interacts with two external APIs:
       </p>
       <ul>
-        <li><strong>Cloudflare D1 (SQLite):</strong> The curated albums, artists, genres, and countries are stored in D1, Cloudflare's serverless SQLite database. This database also stores user profiles and their interaction history (Liked, Disliked, Skipped albums) through foreign-key enforced relationships.</li>
-        <li><strong>Cloudflare Functions:</strong> API routes (like <code>/api/discover</code> or <code>/api/interact</code>) run entirely at the edge. They query the D1 database directly and serve the frontend dynamically.</li>
-        <li><strong>Cloudflare KV CACHE:</strong> Used for fast, globally distributed key-value storage at the edge, ensuring the application remains blazing fast regardless of where the user is located in the world.</li>
+        <li><strong>Last.fm API:</strong> Used to validate the artist's global listener count. High thresholds (e.g., a minimum of 30,000 global listeners) are enforced to filter out non-musicians, actors, or vanity projects that might have slipped through the Wikidata net.</li>
+        <li><strong>MusicBrainz API:</strong> For the validated artists, the pipeline queries MusicBrainz to fetch their official "Studio Albums". It rejects live albums, cheap compilations, and soundtracks. It then fetches the corresponding cover art via the Cover Art Archive along with other meta information.</li>
       </ul>
+
+      <h2>3. Architecture</h2>
+      <p>
+        The entire application is hosted on Cloudflare using a serverless architecture.
+      </p>
+      <ul>
+        <li><strong>Cloudflare D1 (SQLite):</strong> The curated catalog of albums, artists, genres, and countries is stored in D1 (Cloudflare's serverless SQLite) database. This database also stores user profiles and their interaction history (Liked, Disliked, Skipped albums).</li>
+        <li><strong>Cloudflare Functions:</strong> API routes run entirely at the edge. They query the D1 database directly and serve the frontend dynamically.</li>
+        <li><strong>Cloudflare KV CACHE:</strong> Heavy queries, such as daily album generation, are cached here to ensure the application remains fast regardless of where the user is located.</li>
+      </ul>
+
+      <h2>End Note</h2>
+      <p>
+        A lot of recommendation systems try to minimize surprise. This project was built to do the opposite. That is a very different experience from normal music recommendation. It is not trying to be “smart” about your taste. It is trying to be broad, structured, and culturally diverse. The entire philosophy of the project is anti-personalization. Also “Music data” is not one thing. Different APIs answer different questions.
+      </p>
     </article>
   </main>
 
