@@ -11,8 +11,7 @@
         href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&display=swap">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap">
     <link rel="stylesheet" href="get_music.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
@@ -30,12 +29,18 @@
                 Just pure exploration.
             </p>
             <form id="username-form" class="username-form" autocomplete="off">
-                <input type="text" id="username-input" placeholder="choose a username" maxlength="20"
-                    autocomplete="off" spellcheck="false" aria-label="Username">
+                <input type="text" id="username-input" placeholder="choose a username" maxlength="20" autocomplete="off"
+                    spellcheck="false" aria-label="Username">
                 <button id="username-submit" type="submit">Enter</button>
             </form>
             <p id="username-error" class="error-text" aria-live="polite"></p>
             <p class="onboarding-hint">3–20 characters. Letters, numbers, underscores.</p>
+            <div class="docs-links">
+                <button type="button" class="text-btn doc-btn" onclick="openModal('modal-what-is-this')">What is this
+                    tool? </button>
+                <button type="button" class="text-btn doc-btn" onclick="openModal('modal-how-to-use')">How to use
+                    it? </button>
+            </div>
         </div>
     </div>
 
@@ -88,6 +93,13 @@
                 <div id="history-content" class="history-list"></div>
                 <p id="history-empty" class="empty-state">No albums yet. Start exploring!</p>
             </section>
+
+            <footer class="dashboard-footer docs-links">
+                <button type="button" class="text-btn doc-btn" onclick="openModal('modal-what-is-this')">What is this
+                    tool? </button>
+                <button type="button" class="text-btn doc-btn" onclick="openModal('modal-how-to-use')">How to use
+                    it? </button>
+            </footer>
         </div>
     </div>
 
@@ -139,8 +151,7 @@
                         <span class="action-icon">⏭️</span>
                         <span class="action-label">Skip</span>
                     </button>
-                    <button class="action-btn action-like" data-action="LIKED" id="btn-like" type="button"
-                        title="Like">
+                    <button class="action-btn action-like" data-action="LIKED" id="btn-like" type="button" title="Like">
                         <span class="action-icon">👍</span>
                         <span class="action-label">Like</span>
                     </button>
@@ -148,11 +159,76 @@
             </div>
 
             <div id="session-loading" class="session-message">
-                <span class="loading-dot">·</span><span class="loading-dot">·</span><span
-                    class="loading-dot">·</span>
+                <span class="loading-dot">·</span><span class="loading-dot">·</span><span class="loading-dot">·</span>
             </div>
 
             <div id="session-error" class="session-message hidden"></div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="modal-what-is-this" class="modal hidden">
+        <div class="modal-overlay" onclick="closeModal('modal-what-is-this')"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal-what-is-this')" aria-label="Close">×</button>
+            <h2>What is this tool?</h2>
+            <div class="title-accent"></div>
+            <div class="modal-body">
+                <h3>The Problem It Solves</h3>
+                <p>
+                    Modern music streaming platforms are built around algorithms designed to keep you listening to what
+                    you already like. While convenient, this creates an "echo chamber" where true discovery becomes
+                    incredibly difficult.
+                </p>
+                <p>
+                    <strong>World Album Discovery</strong> was built to solve this by completely removing recommendation
+                    algorithms, taste profiling, and personal biases. Instead, it relies on pure geographical curation
+                    and randomness. A user might discover Japanese City Pop one day, Indian Carnatic the next, and
+                    Brazilian Jazz after that. It surfaces culturally diverse and historically important albums from
+                    around the globe, ensuring that your music journey is serendipitous rather than mathematically
+                    predicted.
+                </p>
+
+                <h3>Want to know how it's built?</h3>
+                <p>
+                    The curation is powered by Wikidata SPARQL, Last.fm, and MusicBrainz. The app itself is fully
+                    serverless, running on Cloudflare Pages, KV Cache, and D1 (SQLite).
+                </p>
+                <a href="blogs/technical_details.html" class="text-btn doc-btn" target="_blank"
+                    style="color: var(--accent); margin-top: 8px; display: inline-block;">Read the Full Technical
+                    Details →</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-how-to-use" class="modal hidden">
+        <div class="modal-overlay" onclick="closeModal('modal-how-to-use')"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal-how-to-use')" aria-label="Close">×</button>
+            <h2>How to use it</h2>
+            <div class="title-accent"></div>
+            <div class="modal-body">
+                <p>
+                    You need to choose a unique username for first time. This username will be stored in a database
+                    alongwith your liked, disliked and skipped albums. That's it. Everytime you visit, just enter your
+                    username and your state will be fetched. No cookies used here. </p>
+                <p><strong>🌅 Daily Album:</strong> A single, globally curated pick every day. Everyone around the world
+                    sees the same album.</p>
+                <p><strong>🔍 Filtered Discovery:</strong> Use dropdown menus to filter albums by specific Countries,
+                    Genres, and Decades.</p>
+                <p><strong>🌍 World Tour:</strong> Explores music from a completely random country you haven't recently
+                    visited to fill out your "passport".</p>
+                <p><strong>💎 Hidden Gem:</strong> Surfaces critically acclaimed or historically important albums that
+                    have low global playcounts.</p>
+                <hr style="border: 0; border-top: 1px solid var(--border-subtle); margin: 16px 0;">
+                <h3>Interacting</h3>
+                <p>When an album is presented, you can choose to:</p>
+                <ul style="padding-left: 20px; margin-top: 8px;">
+                    <li><strong>👍 Like:</strong> Add it to your Liked history.</li>
+                    <li><strong>👎 Dislike:</strong> Ensure you won't see it again.</li>
+                    <li><strong>⏭️ Skip:</strong> Not interested right now.</li>
+                </ul>
+            </div>
         </div>
     </div>
 

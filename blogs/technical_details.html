@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>World Album Discovery - Technical Details</title>
+  <link rel="stylesheet" href="blog-style.css">
+</head>
+<body>
+  <!-- Header Section -->
+  <header class="blog-header">
+    <h1 class="blog-title">Technical Architecture</h1>
+    <p class="blog-subtitle">Behind the scenes of World Album Discovery</p>
+  </header>
+
+  <!-- Blog Content -->
+  <main class="blog-content">
+    <article>
+      <h2>How It Works</h2>
+      <p>
+        To achieve an unbiased and high-quality collection of albums, the platform relies on a sophisticated data pipeline and a serverless edge architecture.
+      </p>
+
+      <h3>1. Initial Artist Seeding (<code>getArtists.py</code>)</h3>
+      <p>
+        The curation begins with geography. Using a Python script (<code>getArtists.py</code>), the platform executes highly optimized SPARQL queries against <strong>Wikidata</strong>. It fetches the top 50 musical artists and groups from over 20 different countries. The script strictly filters for entities classified as musicians, singers, composers, or musical groups, sorting them by their Wikipedia site link count to gauge historical or cultural relevance.
+      </p>
+
+      <h3>2. Data Enrichment and Validation (<code>seed.js</code>)</h3>
+      <p>
+        Once the raw list of artists is gathered, a Node.js pipeline (<code>seed.js</code>) takes over to validate and enrich the data. This pipeline interacts with two major external APIs:
+      </p>
+      <ul>
+        <li><strong>Last.fm API:</strong> Used to strictly validate the artist's global listener count. High thresholds (e.g., a minimum of 30,000 listeners) are enforced to systematically filter out non-musicians, politicians, or vanity projects that might have slipped through Wikidata.</li>
+        <li><strong>MusicBrainz API:</strong> For the validated artists, the pipeline queries MusicBrainz to fetch their official "Studio Albums" (explicitly rejecting live albums, compilations, and soundtracks). It then fetches the corresponding cover art via the Cover Art Archive.</li>
+      </ul>
+
+      <h3>3. Serverless Infrastructure</h3>
+      <p>
+        The entire application is hosted on <strong>Cloudflare Pages</strong> using a serverless architecture, which means there is no traditional backend server running continuously.
+      </p>
+      <ul>
+        <li><strong>Cloudflare D1 (SQLite):</strong> The curated albums, artists, genres, and countries are stored in D1, Cloudflare's serverless SQLite database. This database also stores user profiles and their interaction history (Liked, Disliked, Skipped albums) through foreign-key enforced relationships.</li>
+        <li><strong>Cloudflare Functions:</strong> API routes (like <code>/api/discover</code> or <code>/api/interact</code>) run entirely at the edge. They query the D1 database directly and serve the frontend dynamically.</li>
+        <li><strong>Cloudflare KV CACHE:</strong> Used for fast, globally distributed key-value storage at the edge, ensuring the application remains blazing fast regardless of where the user is located in the world.</li>
+      </ul>
+    </article>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="blog-footer">
+    <p>Written by <strong>Nikhil Saxena</strong></p>
+  </footer>
+</body>
+</html>
