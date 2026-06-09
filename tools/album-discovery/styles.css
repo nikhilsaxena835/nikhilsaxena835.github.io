@@ -567,7 +567,9 @@ h2 {
 
 .album-art-container {
   position: relative;
-  width: 100%;
+  width: 80%;
+  margin: 24px auto 0;
+  border-radius: var(--radius);
   aspect-ratio: 1 / 1;
   background: var(--bg-card);
   overflow: hidden;

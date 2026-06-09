@@ -357,18 +357,19 @@ window.closeModal = function(id) {
   async function fetchAlbumDescription(artist, title) {
     try {
       const query = encodeURIComponent(`${artist} ${title} album`);
-      const url = `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${query}&utf8=&format=json&origin=*`;
-      const response = await fetch(url);
-      const data = await response.json();
+      const searchUrl = `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${query}&utf8=&format=json&origin=*`;
+      const searchRes = await fetch(searchUrl);
+      const searchData = await searchRes.json();
       
-      if (data.query && data.query.search && data.query.search.length > 0) {
-        const snippet = data.query.search[0].snippet;
-        const cleanSnippet = snippet
-          .replace(/<[^>]*>?/gm, '')
-          .replace(/&quot;/g, '"')
-          .replace(/&#039;/g, "'")
-          .replace(/&amp;/g, '&') + '...';
-        return cleanSnippet;
+      if (searchData.query && searchData.query.search && searchData.query.search.length > 0) {
+        const pageTitle = searchData.query.search[0].title;
+        const summaryUrl = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(pageTitle)}`;
+        const summaryRes = await fetch(summaryUrl);
+        const summaryData = await summaryRes.json();
+        
+        if (summaryData.extract) {
+          return summaryData.extract;
+        }
       }
     } catch (e) {
       console.error('Failed to fetch album description from Wikipedia', e);
