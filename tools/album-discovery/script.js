@@ -354,6 +354,28 @@ window.closeModal = function(id) {
     }
   }
 
+  async function fetchAlbumDescription(artist, title) {
+    try {
+      const query = encodeURIComponent(`${artist} ${title} album`);
+      const url = `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${query}&utf8=&format=json&origin=*`;
+      const response = await fetch(url);
+      const data = await response.json();
+      
+      if (data.query && data.query.search && data.query.search.length > 0) {
+        const snippet = data.query.search[0].snippet;
+        const cleanSnippet = snippet
+          .replace(/<[^>]*>?/gm, '')
+          .replace(/&quot;/g, '"')
+          .replace(/&#039;/g, "'")
+          .replace(/&amp;/g, '&') + '...';
+        return cleanSnippet;
+      }
+    } catch (e) {
+      console.error('Failed to fetch album description from Wikipedia', e);
+    }
+    return null;
+  }
+
   function renderAlbumCard(album) {
     $('album-title').textContent = album.title;
     $('album-artist').textContent = album.artist_name;
@@ -379,7 +401,15 @@ window.closeModal = function(id) {
       descEl.textContent = album.description;
       descEl.style.display = '';
     } else {
-      descEl.style.display = 'none';
+      descEl.textContent = 'Loading description...';
+      descEl.style.display = '';
+      fetchAlbumDescription(album.artist_name, album.title).then(desc => {
+        if (desc) {
+          descEl.textContent = desc;
+        } else {
+          descEl.style.display = 'none';
+        }
+      });
     }
 
     // Cover art
